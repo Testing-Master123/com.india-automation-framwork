@@ -3,6 +3,7 @@
   <groupId>indiafirst</groupId>
   <artifactId>com.india</artifactId>
   <version>0.0.1-SNAPSHOT</version>
+  
   <dependencies>
   <!-- Source: https://mvnrepository.com/artifact/org.seleniumhq.selenium/selenium-java -->
 <dependency>
@@ -17,6 +18,13 @@
     <artifactId>testng</artifactId>
     <version>7.11.0</version>
     <scope>test</scope>
+</dependency>
+<!-- Source: https://mvnrepository.com/artifact/org.apache.poi/poi -->
+<dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>5.5.0</version>
+    <scope>compile</scope>
 </dependency>
   </dependencies>
 </project>
