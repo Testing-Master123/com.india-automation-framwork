@@ -1,9 +1,13 @@
 package Pages;
 
+import java.time.Duration;
+
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 
 import BaseClass.BaseTest;
 
@@ -26,8 +30,9 @@ public class homepage {
 	  private By firstcheckbox = By.xpath("//input[@value=\"radio1\"]");
 	  private By EnterCountryinsuggesionbox = By.id("autocomplete");
 	  private By Clickonenteredvalue =By.xpath("//li//div[text()='Japan']");
-
-	
+       By enterText = By.xpath("//textarea [@jsname='yZiJbe']");	
+       By clickonentered = By.xpath("//div [@class='lnnVSe']//span//b[text()=' day card']");
+      
 	public void clickonloginbutton()
 	{
 		//loginfield.click();
@@ -65,13 +70,19 @@ public class homepage {
     public void EnterVluein_SuggestionBox()
     {
     	driver.findElement(EnterCountryinsuggesionbox).sendKeys("japan");
-    	Actions act = new Actions(driver);
     	
-    	// WebElement acb = driver.findElement(Clickonenteredvalue);
     	
-    	act.moveToElement(driver.findElement(Clickonenteredvalue)).build().perform();
+    	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+    	
     }
     
+    
+    public void enterSearchValue()
+    {
+    	driver.findElement(enterText).sendKeys("teachers");
+    	WebDriverWait wait = new WebDriverWait(driver,Duration.ofSeconds(10));
+    	wait.until(ExpectedConditions.elementToBeClickable(clickonentered)).click();
+    }
 
 
 }

@@ -1,26 +1,24 @@
 package Tests;
 import org.testng.annotations.BeforeMethod;
+import org.testng.annotations.Listeners;
 import org.testng.annotations.Test;
 import org.testng.asserts.SoftAssert;
 
 import BaseClass.BaseTest;
 import Pages.homepage;
+
+
+@Listeners(utils.TestListener.class)
 public class HomeTest  extends BaseTest{
 	
 	homepage page;
 	
 	
-	@BeforeMethod()
-	public void initdriver()
-	{
-		BaseTest.getinit(driver);
-	}
-	
 	@Test
 	public void LoginTest()
 	{
-		//BaseTest.getinit(driver);
-		page=new homepage(driver);
+		
+		page=new homepage(getDriver());
 		page.clickonloginbutton();
 		
 	}
@@ -30,7 +28,8 @@ public class HomeTest  extends BaseTest{
 	{
 		
 	
-		page=new homepage(driver);
+	
+		page=new homepage(getDriver());
 		String actual_radiotitle ="Radio Button Example";
 		String radiotitle = page.radiobuttontext();
 		System.out.println(radiotitle);
@@ -38,13 +37,14 @@ public class HomeTest  extends BaseTest{
 		
 		softassert.assertEquals(actual_radiotitle,radiotitle);
 		softassert.assertAll();
+		
 	}
 	
 	@Test
 	public void VerifyRadio_button_is_enable_for_click()
 	{
-		//driver =BaseTest.getinit(driver);
-		page=new homepage(driver);
+	
+		page=new homepage(getDriver());
 		page.Clickon_first_checkbox();
 	}
 	
@@ -52,7 +52,20 @@ public class HomeTest  extends BaseTest{
 	@Test
 	public void selectsuggestionboxx()
 	{
-		page=new homepage(driver);
+	
+		page=new homepage(getDriver());
 		page.EnterVluein_SuggestionBox();
 	}
+	
+	
+	@Test
+	public void Email()
+	{
+	
+		page=new homepage(getDriver());
+		page.enterSearchValue();
+	}
 }
+
+
+
